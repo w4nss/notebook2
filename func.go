@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"golang.org/x/crypto/bcrypt"
+	"golang.org/x/crypto/bcrypt" //* для хеширования
 )
 
 // * Ввод текста → Добавление в базу данных..
