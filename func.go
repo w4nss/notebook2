@@ -27,7 +27,8 @@ func addNote(reader *bufio.Reader) {
 	fmt.Println("Сохранено!")
 }
 
-// * Читает все заметки из базы → Выводит их на экран.
+// Читает все заметки из базы → Выводит их на экран.
+
 func listNotes() {
 	rows, err := Database.Query("SELECT id, text FROM notes")
 	if err != nil {
@@ -43,6 +44,8 @@ func listNotes() {
 		fmt.Println(id, text)
 	}
 }
+
+func main()
 
 // * Ввод ID заметки → Удаление её из базы.
 func deleteNote(reader *bufio.Reader) {
