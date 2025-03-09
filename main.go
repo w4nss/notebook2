@@ -8,13 +8,35 @@ import (
 	"os"
 	"strconv"
 	"strings"
-
+	"github.com/labstack/echo/v4"
 	_ "github.com/lib/pq"
 )
 
 var Database *sql.DB
 
 func main() {
+
+	
+	e := echo.New() //Ты создаешь "рацию" (сервер), которая будет слушать запросы
+
+	// Говорим: "Когда придет GET-запрос на адрес /hello — сделай это"
+	e.GET("/hello", func(c echo.Context) error {
+        	return c.String(200, "Привет, мир!") // Отправляем текст обратно
+   	 })
+
+	e.Start(":8080") // Запускаем сервер на порту 8080 (как сказать "Слушаю!")
+
+e := echo.New()
+
+func bye(c echo.Context) error { 
+	return c.String(200, "Пока")
+} 			
+
+e.GET("/bye", bye ) //* -> В браузере ты увидишь белый экран с текстом "Пока"
+
+e.Start(":8080")
+
+
 	connection := "host=localhost port=5432 user=postgres password=1303 dbname=notebook sslmode=disable"
 	var err error
 	Database, err = sql.Open("postgres", connection)
@@ -23,8 +45,6 @@ func main() {
 	}
 	defer Database.Close()
 
-	// * Теперь запускаем консольное меню
-	menu()
 }
 
 // ФУНКЦИИ
