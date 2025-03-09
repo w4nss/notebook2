@@ -12,7 +12,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var Database *sql.DB
+//var Database *sql.DB
 
 func main() {
 
