@@ -14,13 +14,13 @@ import (
 
 var Database *sql.DB
 
-func main() {
+//func main() {
 
 	
 	e := echo.New() //Ты создаешь "рацию" (сервер), которая будет слушать запросы
 
 	// Говорим: "Когда придет GET-запрос на адрес /hello — сделай это"
-	e.GET("/hello", func(c echo.Context) error {
+	//e.GET("/hello", func(c echo.Context) error {
         	return c.String(200, "Привет, мир!") // Отправляем текст обратно
    	 })
 
@@ -28,7 +28,7 @@ func main() {
 
 e := echo.New()
 
-func bye(c echo.Context) error { 
+//func bye(c echo.Context) error { 
 	return c.String(200, "Пока")
 } 			
 

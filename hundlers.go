@@ -2,9 +2,14 @@ package main
 
 import (
 	"encoding/json"
-
+	"fmt"
+	"strings"
 	"github.com/labstack/echo/v4"
 )
+
+func AddNote(c echo.Context, text) error {
+	err := Database.Exec("	")
+}
 
 //! Перенеси логику в обработчики
 
@@ -15,12 +20,16 @@ func ListNotes(c echo.Context) error {
 	}
 	defer rows.Close()
 
-	var notes 
-
-	jsonData, _ := json.Marshal(rows)
-
-	return jsonData
-
+	//Чтение данных 
+	var notes []string
+	for rows.Next() {
+		fmt.Println(rows, "цикл")
+		var id int
+		var text string
+		rows.Scan(&id, &text)
+		notes = append(notes, fmt.Sprintf("%d: %s", id, text))
+	}
+	return c.String(200, strings.Join(notes, "\n"))
 }
 
 //Логика:
