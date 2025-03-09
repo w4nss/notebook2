@@ -1,14 +1,15 @@
-package main
+package fail
 
 import (
 	"encoding/json"
+	"notebook2"
 
 	"github.com/labstack/echo/v4"
 )
 
 //TODO: Перенести логику в обработчики
 func ListNotes(c echo.Context) error {
-	rows, err := Database.Query("SELECT * FROM notes WHERE user_id = $1", user_id)
+	rows, err := main.Database.Query("SELECT * FROM notes WHERE user_id = $1", user_id)
 	if err != nil {
 		return c.JSON(500, map[string]string{"error": "Не удалось получить заметки"})
 	}
