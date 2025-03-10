@@ -40,3 +40,12 @@ func CreatedNote(c echo.Context) error {
 
 	return c.JSON(201, "Заметка добавлена")
 }
+
+func DeletedNote(c echo.Context) error {
+	id := c.Param("id")
+	_, err := Database.Exec("DELETE FROM notes WHERE id = $1", id)
+	if err != nil {
+		c.String(500, "Ошибка удаления заметки")
+	}
+	return c.JSON(200, "Заметка удалена")
+}

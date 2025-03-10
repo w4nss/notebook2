@@ -10,7 +10,7 @@ func ShowForm(c echo.Context) error {
         <meta charset="UTF-8">
         <title>Добавить заметку</title>
     </head>
-    <body>
+    <body>ф
         <h2>Добавить заметку</h2>
         <form action="/notes" method="POST">
             <label for="content">Текст заметки:</label><br>
