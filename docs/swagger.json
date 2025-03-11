@@ -1,0 +1,57 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/notes": {
+            "post": {
+                "description": "Создает новую заметку",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "notes"
+                ],
+                "summary": "Добавить заметку",
+                "parameters": [
+                    {
+                        "description": "Данные заметки",
+                        "name": "note",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Note"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/main.Note"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Note": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "указывает, как поля будут выглядеть в JSON-ответе.",
+                    "type": "integer"
+                },
+                "text": {
+                    "description": "показывает, как они называются в БД.",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

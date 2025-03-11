@@ -1,0 +1,36 @@
+definitions:
+  main.Note:
+    properties:
+      id:
+        description: указывает, как поля будут выглядеть в JSON-ответе.
+        type: integer
+      text:
+        description: показывает, как они называются в БД.
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /notes:
+    post:
+      consumes:
+      - application/json
+      description: Создает новую заметку
+      parameters:
+      - description: Данные заметки
+        in: body
+        name: note
+        required: true
+        schema:
+          $ref: '#/definitions/main.Note'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.Note'
+      summary: Добавить заметку
+      tags:
+      - notes
+swagger: "2.0"
