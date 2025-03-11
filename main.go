@@ -26,6 +26,12 @@ func main() {
 
 	e.GET("/", ShowForm)
 	e.POST("/notes", CreatedNote)
+	e.POST("/register", Registration)
+	e.POST("/login", Login)
+
+	e.GET("/notes", GetNotes, AuthMiddleware)
+	e.POST("/notes", CreatedNote, AuthMiddleware)
+	e.DELETE("/notes/:id", DeletedNote, AuthMiddleware)
 
 	e.Logger.Fatal(e.Start(":8081"))
 }
